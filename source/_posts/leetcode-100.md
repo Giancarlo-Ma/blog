@@ -1,0 +1,74 @@
+---
+title: leetcode-100
+date: 2019-01-22 21:12:52
+categories:
+- leetcode
+tags:
+- tree
+---
+
+# Same tree
+
+Given two binary trees, write a function to check if they are the same or not.
+
+Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
+
+Example 1:
+```
+Input:     1         1
+          / \       / \
+         2   3     2   3
+
+        [1,2,3],   [1,2,3]
+
+Output: true
+```
+Example 2:
+```
+Input:     1         1
+          /           \
+         2             2
+
+        [1,2],     [1,null,2]
+
+Output: false
+```
+Example 3:
+```
+Input:     1         1
+          / \       / \
+         2   1     1   2
+
+        [1,2,1],   [1,1,2]
+
+Output: false
+```
+
+## 题意分析
+
+检查给定两个二叉树是否为结构相同且对应值相等的相同二叉树。
+
+## 代码实现
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} p
+ * @param {TreeNode} q
+ * @return {boolean}
+ */
+var isSameTree = function(p, q) {
+    if(p == null && q == null) return true;
+    if(p == null || q == null) return false;
+    if(p.val == q.val) {
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    }
+    return false;
+};
+```
